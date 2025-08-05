@@ -1,64 +1,81 @@
-Data Transformation and Analysis (Databricks Project)
+# 🧪 Adventure Works Data Transformation – Silver Layer (Databricks + Azure)
 
-Overview
-This project demonstrates the end-to-end pipeline for transforming, storing, and analyzing the Adventure Works dataset using Databricks and Azure Data Lake. The workflow covers data extraction, transformation, storage optimization, and sales analysis with visualization.
+This repository contains a Databricks notebook focused on **data transformation** of the Adventure Works dataset, specifically targeting the **Silver Layer** in a modern data lakehouse architecture using **Azure Data Lake Storage (ADLS)** and **PySpark**.
 
-Project Steps
-1. Data Extraction
-Source: Adventure Works CSV files stored in Azure Data Lake (Bronze Layer).
+---
 
-Method: CSV files were ingested into Databricks notebooks by connecting to Azure Data Lake Storage.
+## 📌 Objective
 
-2. Data Transformation
-CSV data underwent necessary cleaning, type casting, and normalization steps.
+Transform raw Adventure Works CSV data (from Bronze Layer) into clean, optimized Parquet format stored in the **Silver Layer**, ready for downstream analytics and machine learning tasks.
 
-Redundant and inconsistent fields were handled to ensure data quality.
+---
 
-Complex transformations such as joins, aggregations, and derived columns were applied as needed.
+## 🔧 Technologies Used
 
-3. Data Storage
-Target: Azure Data Lake (Silver Layer).
+- **Azure Data Lake Storage (ADLS Gen2)**
+- **Databricks (PySpark Notebooks)**
+- **Parquet File Format**
+- **OAuth Authentication (Service Principal)**
 
-Format: Transformed datasets saved in Parquet format for optimal performance and compression.
+---
 
-This enhances query performance for downstream analytics and reduces storage costs.
+## 📂 Project Structure
 
-4. Sales Data Analysis
-Exploratory Data Analysis (EDA): Focused on the sales dataset to uncover key metrics and trends.
+.
+├── Transformation in Silver Layer.ipynb # Main Databricks notebook
+├── data/
+│ ├── bronze/ # Raw CSVs (source)
+│ └── silver/ # Transformed Parquet files (target)
+├── README.md # You're here!
 
-Visualizations (bar charts, line graphs, etc.) were created within Databricks to highlight sales performance, top-selling products, and seasonal trends.
 
-Insights were drawn into sales distribution, product popularity, and regional contributions.
+---
 
-How to Use
-Prerequisites: Access to Azure Data Lake, Databricks Workspace, and Adventure Works dataset in CSV format.
+## 🚀 Key Features
 
-Data Loading: Use the provided notebooks/scripts to pull the raw CSV data from your Azure Data Lake Bronze container.
+- Secure connection to **Azure Data Lake** using **OAuth-based Service Principal**
+- Type-safe ingestion of CSV data
+- Null value handling and schema standardization
+- Application of PySpark transformations such as:
+  - Data type casting
+  - Column renaming
+  - Filtering and deduplication
+- Output saved in efficient, compressed **Parquet format** for optimized querying
 
-Transformation: Execute the transformation workflows to process and clean the data.
+---
 
-Storage: Save processed data as Parquet files in the Silver container of Azure Data Lake.
+## ⚙️ How to Run
 
-Analysis: Run the included analysis scripts/notebooks to visualize the sales dataset and extract insights.
+### ✅ Prerequisites
+- Databricks Workspace
+- Access to Azure Data Lake (Bronze and Silver containers)
+- Adventure Works CSV files in Bronze Layer
 
-Project Structure
-notebooks/: Contains Databricks notebooks for extraction, transformation, and analysis.
+### ▶ Steps
 
-data/bronze/: Raw CSV files.
+1. **Open the notebook** in Databricks:  
+   `Transformation in Silver Layer.ipynb`
 
-data/silver/: Transformed Parquet files.
+2. **Configure Azure ADLS credentials** (Service Principal) in the notebook
 
-visualizations/: Sample charts and plots from sales analysis.
+3. **Run all cells** to:
+   - Mount or access ADLS containers
+   - Load CSV data
+   - Apply transformations
+   - Save cleaned data to Silver layer
 
-Key Technologies
-Databricks
+---
 
-Azure Data Lake Storage (ADLS)
+## 📈 Outcome
 
-PySpark
+- ✅ Cleaned, transformed dataset in **Parquet format**
+- ✅ Data ready for analytics, reporting, or ML use cases
 
-Parquet Format
+---
 
-Results
-Cleaned and optimized Adventure Works dataset available in Parquet format in your Azure Data Lake "Silver" layer.
-Informative visualizations and actionable insights on sales data.
+## 🔒 Security Note
+
+> ⚠️ **Do NOT upload notebooks with exposed secrets or credentials.**  
+> Replace client secrets with environment variables or secret scopes in production.
+
+
